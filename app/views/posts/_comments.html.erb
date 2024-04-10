@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Comments</h1>
+
+<%= link_to "New comment", new_post_comment_path(post.id) %>
+
+<% if post.comments %>
+  <div id="comments">
+    <% post.comments.each do |comment| %>
+      <div id="<%= dom_id comment %>">
+        <p>
+          <strong>User:</strong>
+          <%= comment.user_email %>
+        </p>
+
+        <p>
+          <strong>Body:</strong>
+          <%= comment.body %>
+        </p>
+        <%= link_to "Edit this comment", edit_post_comment_path(post.id, comment.id) %> |
+      
+        <%= button_to "Destroy this comment", [post, comment], method: :delete %>
+
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

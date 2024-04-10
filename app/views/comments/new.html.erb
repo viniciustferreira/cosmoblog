@@ -1,9 +1,10 @@
 <h1>New comment</h1>
-
-<%= render "form", comment: @comment %>
+<% unless @comment.nil? %>
+  <%= render "form", comment: @comment, post: @post %>
+<% end %>
 
 <br>
 
 <div>
-  <%= link_to "Back to comments", comments_path %>
+  <%= link_to "Back to post", post_path(@comment.post_id) %>
 </div>

@@ -2,7 +2,8 @@
 
 <h1>Comments</h1>
 
-<%= link_to "New comment", new_post_comment_path(post.id) %>
+<%= render "/comments/new", post: @post %>
+
 
 <% if post.comments %>
   <div id="comments">

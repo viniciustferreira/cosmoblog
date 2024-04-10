@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   def new
     @comment = Comment.new(post_id: params[:post_id])
+    @post = Post.find(params[:post_id])
   end
 
   # GET /comments/1/edit
@@ -39,7 +40,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to comment_url(@comment), notice: "Comment was successfully updated." }
+        format.html { redirect_to post_url(@post), notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }

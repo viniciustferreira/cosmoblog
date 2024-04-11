@@ -1,24 +1,37 @@
-# README
+<h1 align="center">Instructions</h1>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Badge Developing](http://img.shields.io/static/v1?label=STATUS&message=DEVELOPING&color=GREEN&style=for-the-badge)
 
-Things you may want to cover:
+This project was made on:
 
-* Ruby version
+* Ruby 3.3.0
 
-* System dependencies
+* Rails 7.1.3.2
 
-* Configuration
+* Postgres 16.2 (on Docker)
 
-* Database creation
+* Ubuntu 22.04
 
-* Database initialization
+To run the project:
+```
+rails db:create
+rails db:migrate
+```
+or
+```
+rails db:setup
+```
+and to start the server
+```
+rails s
+```
+Postgres on docker: 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+image on [DockerHub](https://hub.docker.com/_/postgres):
+```
+docker pull postgres 
+```
+run container:
+```
+docker run -e  POSTGRES_PASSWORD=selected_password -d -p 5432:5432 -v /var/run/postgresql:/var/run/postgresql  postgres 
+```

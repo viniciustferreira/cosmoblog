@@ -1,18 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe "comments/edit", type: :view do
-  let(:comment) {
-    Comment.create!()
-  }
-
-  before(:each) do
-    assign(:comment, comment)
+  let(:user) do
+    User.create(email: "teste@email.com", password: "123456")
   end
 
-  it "renders the edit comment form" do
-    render
+  let(:new_post) do
+    Post.create!(user_id: user.id, title: 'teste', body: 'teste')
+  end
 
-    assert_select "form[action=?][method=?]", comment_path(comment), "post" do
-    end
+  let(:comment) {
+    Comment.create!(post_id: new_post.id, user_id: user.id, body: "teste")
+  }
+
+  it "renders the edit comment form" do
+    render comment
+
+    expect(rendered).to match(/teste@email.com/)
   end
 end

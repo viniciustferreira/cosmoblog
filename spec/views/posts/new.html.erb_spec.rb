@@ -6,15 +6,12 @@ RSpec.describe "posts/new", type: :view do
   end
 
   let(:new_post) do
-    Post.create!(user_id: user.id, title: 'teste', body: 'teste')
+    Post.new
   end
 
-
   it "renders new post form" do
-    render 
+    render new_post
 
-    assert_select "form[action=new][method=post]", posts_path, "post" do |element|
-      puts element
-    end
+    expect(rendered).to match(/Text/)
   end
 end

@@ -56,7 +56,6 @@ RSpec.describe "/posts", type: :request do
   describe "GET /new" do
     it "renders a successful response" do
       get new_post_url
-      puts new_post_url
       expect(response).to be_successful
     end
   end
@@ -65,7 +64,6 @@ RSpec.describe "/posts", type: :request do
     it "renders a successful response" do
       post = Post.create! valid_attributes
       get edit_post_url(post)
-      puts response
       expect(response).to be_successful
     end
   end

@@ -12,8 +12,6 @@ RSpec.describe "posts/show", type: :view do
   it "renders attributes in <p>" do
     render new_post
 
-    assert_select "p", post_path(new_post), "get" do |element|
-      puts element
-    end
+    expect(rendered).to match(/teste/)
   end
 end

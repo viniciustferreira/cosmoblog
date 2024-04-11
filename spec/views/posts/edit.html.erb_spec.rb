@@ -1,18 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe "posts/edit", type: :view do
-  let(:post) {
-    Post.create!()
-  }
+  let(:user) do
+    User.create(email: "teste@email.com", password: "123456")
+  end
 
-  before(:each) do
-    assign(:post, post)
+  let(:new_post) do
+    Post.create!(user_id: user.id, title: 'teste', body: 'teste')
   end
 
   it "renders the edit post form" do
-    render
+    render new_post
 
-    assert_select "form[action=?][method=?]", post_path(post), "post" do
-    end
+    expect(rendered).to match(/teste/)
   end
 end

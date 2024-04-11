@@ -13,6 +13,14 @@ This project was made on:
 * Ubuntu 22.04
 
 To run the project:
+
+dependencies:
+```
+gem install bundler
+bundle install
+```
+database:
+
 ```
 rails db:create
 rails db:migrate
